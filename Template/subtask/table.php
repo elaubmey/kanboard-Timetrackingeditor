@@ -8,9 +8,10 @@
             <th class="column-40"><?= t('Title') ?></th>
             <th><?= t('Assignee') ?></th>
             <th><?= t('Time tracking') ?></th>
+            <?= $this->hook->render('template:subtask:table:header:before-timetracking') ?>
             <?php if ($editable): ?>
                 <th class="column-5"></th>
-                <th class="column-5"></th>
+                <th class="column-5"><?= t('Set time') ?></th>
             <?php endif ?>
         </tr>
     </thead>
@@ -30,6 +31,7 @@
                     <?= $this->text->e($subtask['name'] ?: $subtask['username']) ?>
                 <?php endif ?>
             </td>
+            <?= $this->hook->render('template:subtask:table:rows', array('subtask' => $subtask)) ?>
             <td>
                 <ul class="no-bullet">
                     <li>
